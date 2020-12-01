@@ -4,6 +4,7 @@ import Card from "@material-ui/core/Card";
 import CardActions from "@material-ui/core/CardActions";
 import CardContent from "@material-ui/core/CardContent";
 import Typography from "@material-ui/core/Typography";
+import FormControl from '@material-ui/core/FormControl';
 import { useState } from 'react';
 import api from './services/api'
 
@@ -18,10 +19,12 @@ function Unbrewd() {
         }
     )
     return(
-        <div className="Unbrewd">
+        <body className="Unbrewd">
             <header className="Unbrewd-header">
                 <h1>Unbrewd</h1>
-
+            </header>
+        
+            <div class="card">
                 <Card>
                     <CardContent>
                         <Typography color="textSecondary" gutterBottom>
@@ -35,8 +38,19 @@ function Unbrewd() {
                         <Button size="small" variant="contained" color="secondary" onClick={() => {setCount(count + 1)}}>Click Me</Button>
                     </CardActions>
                 </Card>
-            </header>
-        </div>
+            </div>
+
+            <div class="login-form">
+                <FormControl>
+                    <TextField id="usernametext" label="Username" />
+                    <Input id="username"/>
+                </FormControl>
+            </div>
+            
+
+
+                
+        </body>
     );
 }
 export default Unbrewd;
