@@ -5,19 +5,39 @@ import CardActions from "@material-ui/core/CardActions";
 import CardContent from "@material-ui/core/CardContent";
 import Typography from "@material-ui/core/Typography";
 import FormControl from '@material-ui/core/FormControl';
+import TextField from '@material-ui/core/TextField';
 import { useState } from 'react';
 import api from './services/api'
+import { LocalNotificationsPluginWeb } from '@capacitor/core';
 
 
 function Unbrewd() {
     const [count, setCount] = useState(21)
     const [news, setNews] = useState([])
+    const [user, setUser] = useState("bob")
+    const [password, setPassword] = useState("")
     api.service('news').find({}).then(
         result => {
             console.log(result.data)
             setNews(result.data)
         }
     )
+    const login = () => {
+        api.service('users').find({
+            query: {
+                username: user,
+                password
+            }
+        }).then(
+            result => {
+                //handle results
+            }
+        ).catch(
+            error => {
+                //handle errors
+            }
+        )
+    }
     return(
         <body className="Unbrewd">
             <header className="Unbrewd-header">
@@ -42,9 +62,14 @@ function Unbrewd() {
 
             <div class="login-form">
                 <FormControl>
-                    <TextField id="usernametext" label="Username" />
-                    <Input id="username"/>
+                    <TextField id="usernametext" label="Username" value={user} onChange={e => {setUser(e.target.value)}}/>
+                    <TextField id="passwordtext" label="Password" type="password" value={password} onChange={e => {setPassword(e.target.value)}}/> 
+                    <Button size="small" variant="contained" color="secondary" onClick={() => {login()}}>Login</Button>
                 </FormControl>
+                <p>
+                    {user}
+                    {password}
+                </p>
             </div>
             
 
