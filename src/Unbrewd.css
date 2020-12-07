@@ -14,3 +14,14 @@
   font-size: calc(10px + 2vmin);
   color: rgb(198, 127, 65);
 }
+
+.login-form {
+  background-color: #250b00;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: left;
+  justify-content: top;
+  font-size: calc(10px + 2vmin);
+  color: rgb(198, 127, 65);
+}
